@@ -7,9 +7,9 @@ import Layout from "./components/UI/Layout/Layout";
 import Login from "./containers/Auth/Login/Login";
 import Register from "./containers/Auth/Register/Register";
 import Logout from "./containers/Auth/Logout/Logout";
-import * as actions from './store/actions/index';
 import User from "./containers/Admin/User/User";
 import UserDelete from "./containers/Admin/User/UserDelete";
+import {authCheckState, setAuthRedirectPath} from "./store/epics/authEpic";
 
 class App extends Component {
     componentDidMount() {
@@ -57,8 +57,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuthCheck: () => dispatch(actions.authCheckState()),
-        onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+        onAuthCheck: () => dispatch(authCheckState()),
+        onSetAuthRedirectPath: (path) => dispatch(setAuthRedirectPath(path))
     };
 };
 

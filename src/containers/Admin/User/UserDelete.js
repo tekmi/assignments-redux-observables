@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Toolbar from "../../../components/Navigation/Toolbar/Toolbar";
 import {connect} from "react-redux";
-import * as actions from '../../../store/actions/index';
-import axios from './../../../helpers/axios';
+import {axios} from './../../../helpers/axios';
 import withErrorHandler from "../../../hoc/withErrorHandler";
+import {userDeleteStart} from "../../../store/epics/userEpic";
 
 class UserDelete extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onUserDelete: (token, userId) => dispatch(actions.userDelete(token, userId))
+        onUserDelete: (token, userId) => dispatch(userDeleteStart(token, userId))
     };
 };
 

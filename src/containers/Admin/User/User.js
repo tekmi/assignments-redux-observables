@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import Toolbar from "../../../components/Navigation/Toolbar/Toolbar";
 import {connect} from "react-redux";
-import * as actions from '../../../store/actions/index';
 import Spinner from "../../../components/UI/Spinner/Spinner";
-import axios from './../../../helpers/axios';
+import {axios} from './../../../helpers/axios';
 import withErrorHandler from "../../../hoc/withErrorHandler";
 import classes from './../../../App.css';
 import { NavLink } from 'react-router-dom';
+import {userGetStart, userUpdateStart} from "../../../store/epics/userEpic";
 
 class User extends Component {
     constructor(props) {
@@ -25,6 +25,7 @@ class User extends Component {
     }
 
     componentDidMount () {
+        console.log(this.props.user.id);
         this.props.onUserGet(this.props.token, this.props.user.id);
     }
 
@@ -227,8 +228,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onUserGet: (token, userId) => dispatch(actions.userGet(token, userId)),
-        onUserUpdate: (token, userId, userDetails) => dispatch(actions.userUpdate(token, userId, userDetails))
+        onUserGet: (token, userId) => dispatch(userGetStart(token, userId)),
+        onUserUpdate: (token, userId, userDetails) => dispatch(userUpdateStart(token, userId, userDetails))
     };
 };
 

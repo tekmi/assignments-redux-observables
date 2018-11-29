@@ -1,7 +1,8 @@
-import axios from 'axios';
+import axiosOrigin from 'axios';
 
-const backendInstance = axios.create({
+export const axios = axiosOrigin.create({
     baseURL: 'http://localhost:9002/index.php/api/'
 });
 
-export default backendInstance;
+export const API_URL = 'http://localhost:9002/index.php/api';
+

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {NavLink, Redirect} from "react-router-dom";
 
-import * as actions from '../../../store/actions/index';
 import classes from './../../../App.css';
 import Spinner from "../../../components/UI/Spinner/Spinner";
-import axios from './../../../helpers/axios';
+import {axios} from './../../../helpers/axios';
 import withErrorHandler from "../../../hoc/withErrorHandler";
 import {connect} from "react-redux";
+import {authInit} from "../../../store/epics/authEpic";
 
 class Login extends Component {
     constructor(props) {
@@ -99,7 +99,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLoginSubmit: (email, password) => dispatch(actions.auth(email, password))
+        onLoginSubmit: (email, password) => dispatch(authInit(email, password))
     }
 };
 

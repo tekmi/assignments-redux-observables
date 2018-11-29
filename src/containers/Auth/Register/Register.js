@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../../../store/actions/index';
+import {registerCleanup, registerInit} from "../../../store/epics/authEpic";
 import classes from './../../../App.css';
 
-import axios from './../../../helpers/axios';
+import {axios} from './../../../helpers/axios';
 import withErrorHandler from "../../../hoc/withErrorHandler";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import {NavLink, Redirect} from "react-router-dom";
@@ -202,8 +202,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onRegisterSubmit: (data) => dispatch(actions.register(data)),
-        afterRegisterCleanup: (email) => dispatch(actions.registerCleanup(email))
+        onRegisterSubmit: (data) => dispatch(registerInit(data)),
+        afterRegisterCleanup: (email) => dispatch(registerCleanup(email))
     }
 };
 

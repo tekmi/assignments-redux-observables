@@ -23,6 +23,8 @@ const withErrorHandler = ( WrappedComponent, axios ) => {
                     errorMessage = error.response.data['hydra:description'].replace(/addresses\[0\]\./gi, '');
                 }
 
+                console.log('Inter', errorMessage);
+
                 this.setState({
                     error: errorMessage
                 });
